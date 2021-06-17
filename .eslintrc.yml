@@ -1,0 +1,16 @@
+env:
+  mocha: true
+  node: true
+parserOptions:
+  ecmaVersion: 2021
+extends:
+  - airbnb-base 
+  - plugin:prettier/recommended
+rules:
+  # 'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement']
+  no-await-in-loop: 0
+  prefer-arrow-callback: 0
+  import/no-extraneous-dependencies: 0
+  no-nested-ternary: 0
+  # 'no-underscore-dangle': 0
+  # 'no-plusplus': 0
