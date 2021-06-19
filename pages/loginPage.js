@@ -13,6 +13,10 @@ class LoginPage {
     await this.page.click("//button[@type='submit'][text()='Login']");
   }
 
+  async logout() {
+    await this.page.click("//a[@class='nav-link'][text()='Logout']");
+  }
+
   async verifyLoginSuccess() {
     await this.page.waitForSelector("//span[contains(text(),'Hi')]", {
       timeout: 60000,

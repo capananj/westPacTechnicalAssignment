@@ -16,5 +16,9 @@ class HomePage {
   async clickPopularModel() {
     await this.page.click("//a[contains(@href,'/model/')]");
   }
+
+  async clickProfile() {
+    await this.page.click("//a[@class='nav-link'][text()='Profile']");
+  }
 }
 module.exports = { HomePage };

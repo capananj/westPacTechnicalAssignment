@@ -8,6 +8,7 @@ const { HomePage } = require("../pages/homePage");
 const { RegistrationPage } = require("../pages/registrationPage");
 const { LoginPage } = require("../pages/loginPage");
 const { ModelPage } = require("../pages/modelPage");
+const { ProfilePage } = require("../pages/profilePage");
 
 const registration = async (homePage, registrationPage) => {
   await homePage.navigate();
@@ -35,7 +36,7 @@ const login = async (loginPage, username, password) => {
   await loginPage.verifyLoginSuccess();
 };
 
-describe("buggy cars rating registration", function test() {
+describe("Buggy cars rating registration", function test() {
   let page;
   this.timeout(60000);
   before(async () => {
@@ -46,7 +47,7 @@ describe("buggy cars rating registration", function test() {
     await page.context().browser().close();
   });
 
-  it("register a new user and login", async () => {
+  it("Register a new user and login", async () => {
     try {
       const homePage = new HomePage(page);
       const registrationPage = new RegistrationPage(page);
@@ -63,7 +64,7 @@ describe("buggy cars rating registration", function test() {
   // TODO test case for input invalid string into register form and check warning message
 });
 
-describe("buggy cars rating votes", function test() {
+describe("Buggy cars rating votes", function test() {
   let page;
   this.timeout(60000);
   let homePage;
@@ -99,4 +100,50 @@ describe("buggy cars rating votes", function test() {
       console.log(e);
     }
   });
+
+  // TODO test case for vote Popular Make
+
+  // TODO test case for vote car from List of all registered models.
+});
+
+describe("Buggy cars rating update user profile", function test() {
+  let page;
+  this.timeout(60000);
+  let homePage;
+  let registrationPage;
+  let loginPage;
+  let profilePage;
+  before(async () => {
+    page = await launchBrowser(chromium);
+    homePage = new HomePage(page);
+    registrationPage = new RegistrationPage(page);
+    loginPage = new LoginPage(page);
+    profilePage = new ProfilePage(page);
+  });
+  after(async () => {
+    // await page.close();
+    // await page.context().browser().close();
+  });
+
+  it("Update user profile", async () => {
+    try {
+      // Register
+      const user = await registration(homePage, registrationPage);
+      // Login
+      await login(loginPage, user.username, user.password);
+      // Click the Profile link
+      await homePage.clickProfile();
+
+      const newPassword = await profilePage.updateProfile(user.password);
+      // logout and user new password login again
+      await loginPage.logout();
+      await login(loginPage, user.username, newPassword);
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  // TODO test case for vote Popular Make
+
+  // TODO test case for vote car from List of all registered models.
 });

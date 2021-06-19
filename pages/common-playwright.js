@@ -30,6 +30,9 @@ const launchBrowser = async (browserType) => {
   return page;
 };
 
+const getRandItem = (list) => list[Math.floor(Math.random() * list.length)];
+
 module.exports = {
   launchBrowser,
+  getRandItem,
 };
