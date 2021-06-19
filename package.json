@@ -15,7 +15,7 @@
   "description": "westpac technical assignment buggy cars rating",
   "main": "index.js",
   "scripts": {
-    "test": "123"
+    "test": "mocha --reporter mochawesome --timeout 60000"
   },
   "repository": {
     "type": "git",

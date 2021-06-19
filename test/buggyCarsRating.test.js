@@ -77,8 +77,8 @@ describe("Buggy cars rating votes", function test() {
     loginPage = new LoginPage(page);
   });
   after(async () => {
-    // await page.close();
-    // await page.context().browser().close();
+    await page.close();
+    await page.context().browser().close();
   });
 
   it("Votes are counted", async () => {
@@ -92,9 +92,9 @@ describe("Buggy cars rating votes", function test() {
       await homePage.clickPopularModel();
       const modelPage = new ModelPage(page);
       const numberBeforeVote = await modelPage.getVotes();
-      console.log(numberBeforeVote);
+      // console.log(numberBeforeVote);
       const numberAfterVote = await modelPage.commentAndVote();
-      console.log(numberAfterVote);
+      // console.log(numberAfterVote);
       expect(numberAfterVote - numberBeforeVote).to.equal(1);
     } catch (e) {
       console.log(e);
@@ -121,8 +121,8 @@ describe("Buggy cars rating update user profile", function test() {
     profilePage = new ProfilePage(page);
   });
   after(async () => {
-    // await page.close();
-    // await page.context().browser().close();
+    await page.close();
+    await page.context().browser().close();
   });
 
   it("Update user profile", async () => {
@@ -143,7 +143,5 @@ describe("Buggy cars rating update user profile", function test() {
     }
   });
 
-  // TODO test case for vote Popular Make
-
-  // TODO test case for vote car from List of all registered models.
+  // TODO test case for invalid input
 });
