@@ -44,8 +44,8 @@ class ProfilePage {
       ])
     );
     // Change Password
-    const newPassword = '123@QAZwsx';
-    console.log(newPassword);
+    const newPassword = "123@QAWxs";
+    // console.log(newPassword);
     await this.page.fill("#currentPassword", currentPassword);
     await this.page.fill("#newPassword", newPassword);
     await this.page.fill("#newPasswordConfirmation", newPassword);
